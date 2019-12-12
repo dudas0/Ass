@@ -5,43 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Admin" Height="450" Width="800">
-    <Grid>
+        Title="Admin" Height="500" Width="900" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="1200" Height="700" RenderTransformOrigin="0.483,0.5">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1.5">
                 <GradientStop Color="Black" Offset="0"/>
                 <GradientStop Color="#FF4A69BD" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView Name="lista" Margin="33,65,509,65" Opacity="0.8" ItemsSource="{Binding Path=Table}" Visibility="Visible" Background="#FF5292D8" BorderBrush="#FF0E1D38" Foreground="#FFFEFEFE">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Header="Tytuł" Width="auto"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Director}" Header="Reżyser" Width="auto"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Year}" Header="Rok" Width="auto"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Genre}" Header="Gatunek" Width="auto"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=AvgRate}" Header="Ocena" Width="auto"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=NumOfRates}" Header="Wyświtlenia" Width="auto"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="Label" Margin="330,65,400,345"/>
-        <Label Content="Label" Margin="330,94,400,316"/>
-        <Label Content="Label" Margin="330,123,400,287"/>
-        <Label Content="Label" Margin="330,152,400,258"/>
-        <TextBox TextWrapping="Wrap" Margin="400,65,323,348"/>
-        <TextBox TextWrapping="Wrap" Margin="400,97,323,316"/>
-        <TextBox TextWrapping="Wrap" Margin="400,126,323,287"/>
-        <TextBox TextWrapping="Wrap" Margin="400,155,323,258"/>
-        <Button Foreground="white" Background="#FF0A5282" Content="Dodaj do BAZY DANYCH" Margin="330,260,315,133"/>
-        <Label FontSize="20" Content="DANE STATYSTYCZNE" Margin="555,16,27,384"/>
-        <Label Content="Liczba zarejestrowanych użytkowników : " Margin="505,61,71,343"/>
-        <Label Content="SQL" Foreground="white" Margin="729,60,19,343"/>
-        <Label Content="Label" Margin="330,185,400,225"/>
-        <Label Content="Label" Margin="330,214,400,196"/>
-        <TextBox TextWrapping="Wrap" Margin="400,188,323,225"/>
-        <TextBox TextWrapping="Wrap" Margin="400,217,323,196"/>
-        <Button Content="Filtruj" Margin="96,16,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195"/>
-        <Label Foreground="white" Content="Najpopularniejsze gatunki " Margin="555,175,83,225"/>
+        <DataGrid  Name="dg" Margin="168,256,0,0" ItemsSource="{Binding Path=Table}"  CanUserSortColumns="True" Visibility="Visible" Background="#FF1E436B" IsSynchronizedWithCurrentItem="False"  Width="306" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF6384AD" GridLinesVisibility="All" VerticalGridLinesBrush="#FF6384AD" FontFamily="Century Gothic">
+            <DataGrid.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF5273B6" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.BorderBrush>
+            <DataGrid.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFADC8E8" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.OpacityMask>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Title}" Header="Tytuł" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Path=Director}" Header="Reżyser" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Path=Year}" Header="Rok" Width="30"/>
+                <DataGridTextColumn Binding="{Binding Path=Genre}" Header="Gatunek" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Path=AvgRate}" Header="Ocena" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Path=NumOfRates}" Header="Wyświtlenia" Width="50"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="title" Content="Tytuł : " Margin="534,322,0,0" Visibility="Visible" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="director" Content="Reżyser : " Margin="534,352,0,0" Visibility="Visible" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="year" Content="Rok : " Margin="534,296,0,0" Visibility="Visible" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="genre" Content="Gatunek : " Margin="534,375,0,0" Visibility="Visible" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="rate" Content="Ocena : " Margin="534,403,0,0" Visibility="Visible" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="views" Content="Wyświetlenia : " Margin="533,433,0,0" Visibility="Visible" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Button Content="Dodaj do bazy" Foreground="white" Background="#FF0A5282" Margin="633,494,0,0" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="31" FontFamily="Century Gothic"/>
+        <Label FontSize="20" Content="DANE STATYSTYCZNE" Margin="0,0,172,521" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="212" Height="40" FontFamily="Century Gothic"/>
+        <TextBox Name="roczeka" HorizontalAlignment="Left" Margin="633,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox x:Name="tytula" HorizontalAlignment="Left" Margin="633,326,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox x:Name="rezysera" HorizontalAlignment="Left" Margin="633,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox x:Name="gatuneka" HorizontalAlignment="Left" Margin="633,380,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox x:Name="ocenaa" HorizontalAlignment="Left" Margin="633,408,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox x:Name="wyswietleniaa" HorizontalAlignment="Left" Margin="633,434,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox x:Name="obejrzanya" Text="False" HorizontalAlignment="Left" Margin="633,461,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic" Visibility="Hidden"/>
+        <Label Content="Liczba zarejestrowanych użytkowników : " HorizontalAlignment="Left" Margin="808,201,0,0" VerticalAlignment="Top" Height="30" Width="242" FontFamily="Century Gothic"/>
+        <Label x:Name="lusers" Content="12" HorizontalAlignment="Left" Margin="829,231,0,0" VerticalAlignment="Top" Height="43" Width="48" FontSize="28" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="zarejestrowanych użytkowników" HorizontalAlignment="Left" Margin="877,250,0,0" VerticalAlignment="Top" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label Content="Liczba filmów w bazie : " HorizontalAlignment="Left" Margin="816,285,0,0" VerticalAlignment="Top" Height="30" Width="226" FontFamily="Century Gothic"/>
+        <Label x:Name="lmovies" Content="232" HorizontalAlignment="Left" Margin="829,319,0,0" VerticalAlignment="Top" Height="43" Width="56" FontSize="28" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="filmow w bazie" HorizontalAlignment="Left" Margin="885,0,0,0" VerticalAlignment="Center" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label Content="A W TYM : " HorizontalAlignment="Left" Margin="823,366,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="lcomedy" Content="32" HorizontalAlignment="Left" Margin="824,397,0,0" VerticalAlignment="Top" Height="30" Width="48" FontSize="18" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="komedie" HorizontalAlignment="Left" Margin="877,406,0,0" VerticalAlignment="Top" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label x:Name="lhorror" Content="82" HorizontalAlignment="Left" Margin="824,424,0,0" VerticalAlignment="Top" Height="30" Width="48" FontSize="18" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="horrorów" HorizontalAlignment="Left" Margin="877,433,0,0" VerticalAlignment="Top" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label x:Name="lanim" Content="24" HorizontalAlignment="Left" Margin="824,451,0,0" VerticalAlignment="Top" Height="30" Width="48" FontSize="18" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="filmów animowanych" HorizontalAlignment="Left" Margin="877,460,0,0" VerticalAlignment="Top" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label x:Name="ldrama" Content="28" HorizontalAlignment="Left" Margin="824,478,0,0" VerticalAlignment="Top" Height="30" Width="48" FontSize="18" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="dramatów" HorizontalAlignment="Left" Margin="877,487,0,0" VerticalAlignment="Top" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label x:Name="lchrist" Content="102" HorizontalAlignment="Left" Margin="824,505,0,0" VerticalAlignment="Top" Height="30" Width="48" FontSize="18" Foreground="White" FontFamily="Century Gothic"/>
+        <Label Content="filmów świątecznych" HorizontalAlignment="Left" Margin="877,514,0,0" VerticalAlignment="Top" Height="22" Width="165" Foreground="White" FontSize="10" FontFamily="Century Gothic"/>
+        <Label Content="Aby dowiedzieć się jakie filmy mają naljepszą ocene lub" HorizontalAlignment="Left" Margin="168,196,0,0" VerticalAlignment="Top" Width="306" Height="40" Foreground="#FF0D0000" FontSize="10"/>
+        <Label Content="które są najczęsciej ogladane należy kliknąć na odpowiednie kolumny" HorizontalAlignment="Left" Margin="168,212,0,0" VerticalAlignment="Top" Width="322" Height="40" Foreground="#FF0D0000" FontSize="10"/>
+        <Label Content="wtedy dokona się sortowanie filmów według określonego kryterium." HorizontalAlignment="Left" Margin="168,226,0,0" VerticalAlignment="Top" Width="306" Height="26" Foreground="#FF0D0000" FontSize="10"/>
+        <Label Content="Dodaj nowy film do bazy filmów" HorizontalAlignment="Left" Margin="534,256,0,0" VerticalAlignment="Top" Height="34" Width="231" FontSize="14" FontFamily="Century Gothic" Foreground="White" FontWeight="Heavy"/>
+        <Label FontSize="20" Content="RANKINGI FILMÓW" Margin="0,0,726,522" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="306" Height="40" FontFamily="Century Gothic"/>
+        <Image Source="C:\Users\Karolinka\Pictures\logo.png" Margin="509,99,0,0" RenderTransformOrigin="0.504,0.521" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="92">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.434"/>
+                    <TranslateTransform X="-0.019" Y="0.005"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label Content="Witaj na stronie admina!" HorizontalAlignment="Left" Margin="584,143,0,0" VerticalAlignment="Top" Height="39" Width="207" FontFamily="Century Gothic" Foreground="White" FontSize="16"/>
+        <Button Content="x" HorizontalAlignment="Left" Margin="1014,116,0,0" VerticalAlignment="Top" Height="23" Width="28" Background="#FF0C3C80" Foreground="White" Click="Button_Click_1"/>
+
     </Grid>
 </Window>

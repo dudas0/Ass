@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800">
-    <Grid>
+        Title="Home" Height="500" Width="900">
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center" VerticalAlignment="Center" Width="900" Height="500">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="497*"/>
             <ColumnDefinition Width="303*"/>
@@ -17,43 +17,53 @@
                 <GradientStop Color="#FF4A69BD" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label Content="Witaj!" Foreground="#ffffff" FontSize="45" FontFamily="Calibri" HorizontalAlignment="Left" Height="80" Margin="339,10,0,0" VerticalAlignment="Top" Width="148"/>
-        <Button Content="Admin account" Foreground="#ffffff" FontFamily="Calibri" Background="#3e87ad" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="151,26,0,0" VerticalAlignment="Top" Width="95"/>
-        <Image Source="C:\Users\Karolinka\Pictures\logo.png" Margin="0,-21,297,255" Width="200" Height="200"/>
 
+        <Label x:Name="title" Content="Tytuł : " Margin="335,245,142,231" Visibility="Visible" Width="82" Height="24"/>
+        <Label x:Name="director" Content="Reżyser : " Margin="335,272,142,204" Visibility="Visible" Width="82" Height="24"/>
+        <Label x:Name="year" Content="Rok : " Margin="335,218,142,258" Visibility="Visible" Width="82" Height="24"/>
+        <Label x:Name="genre" Content="Gatunek : " Margin="335,299,142,177" Visibility="Visible" Width="82" Height="24"/>
+        <Label x:Name="rate" Content="Ocena : " Margin="335,325,142,151" Visibility="Visible" Width="82" Height="24"/>
+        <Label x:Name="views" Content="Wyświetlenia : " Margin="335,349,142,127" Visibility="Visible" Width="82" Height="24"/>
+        <TextBox Name="roczek" HorizontalAlignment="Left" Margin="429,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox Name="tytul" HorizontalAlignment="Left" Margin="429,245,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox Name="rezyser" HorizontalAlignment="Left" Margin="429,272,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox Name="gatunek" HorizontalAlignment="Left" Margin="429,299,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox Name="ocena" HorizontalAlignment="Left" Margin="429,327,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox Name="wyswietlenia" HorizontalAlignment="Left" Margin="429,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
+        <TextBox Name="obejrzane"  HorizontalAlignment="Left" Margin="429,381,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" FontFamily="Century Gothic"/>
 
-        <Button Name="wyszukaj" Content="Wyszukaj filmy" Margin="33,74,104,319" Grid.Column="1" Click="wyszukaj_Click" Foreground="#FFFBFCFF" Background="#FF31908B" BorderBrush="#FFB1D9BC"/>
-
-        <Label x:Name="title" Content="Tytuł : " Margin="205,128,210,282" Visibility="Hidden" Width="82" Height="24"/>
-        <Label x:Name="director" Content="Reżyser : " Margin="205,153,210,257" Visibility="Hidden" Width="82" Height="24"/>
-        <Label x:Name="year" Content="Rok : " Margin="205,99,210,311" Visibility="Hidden" Width="82" Height="24"/>
-        <Label x:Name="genre" Content="Gstunek : " Margin="205,182,210,228" Visibility="Hidden" Width="82" Height="24"/>
-        <Label x:Name="rate" Content="Ocena : " Margin="205,211,210,199" Visibility="Hidden" Width="82" Height="24"/>
-        <Label x:Name="views" Content="Wyświetlenia : " Margin="205,236,210,174" Visibility="Hidden" Width="82" Height="24"/>
-        <TextBox Name="roczek" TextWrapping="Wrap" Visibility="Hidden" Margin="292,99,129,306" Width="76" Height="21"/>
-        <TextBox Name ="tytul"  TextWrapping="Wrap" Visibility="Hidden" Margin="292,133,129,280" Width="76" Height="21"/>
-        <TextBox Name="rezyser" TextWrapping="Wrap" Visibility="Hidden" Margin="292,159,129,254" Width="76" Height="21"/>
-        <TextBox Name="gatunek"  TextWrapping="Wrap" Visibility="Hidden" Margin="292,185,129,228" Width="76" Height="21"/>
-        <TextBox Name="ocena" TextWrapping="Wrap" Visibility="Hidden" Margin="292,214,129,199" Width="76" Height="21"/>
-        <TextBox Name="wyswietlenia" TextWrapping="Wrap" Visibility="Hidden" Margin="292,241,129,172" Width="76" Height="21"/>
-
-        <DataGrid  Name="dg" Margin="460,125,13,9" ItemsSource="{Binding Path=Table}"  CanUserSortColumns="True" Visibility="Hidden" Background="#FF5292D8" BorderBrush="#FF0E1D38" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="False" SelectionChanged="dg_SelectionChanged" Height="400" Width="600">
+        <DataGrid  Name="dg" Margin="0,132,0,0" ItemsSource="{Binding Path=Table}"  CanUserSortColumns="True" Visibility="Visible" Background="#FF2A5585" BorderBrush="#FF0E1D38" IsSynchronizedWithCurrentItem="False" SelectionChanged="dg_SelectionChanged" Height="315" Width="284" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" Grid.Column="1">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Title}" Header="Tytuł" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=Director}" Header="Reżyser" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=Year}" Header="Rok" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=Year}" Header="Rok" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Path=Genre}" Header="Gatunek" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=AvgRate}" Header="Ocena" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=AvgRate}" Header="Ocena" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Path=NumOfRates}" Header="Wyświtlenia" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=Watched}" Header="Wyświtlenia" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="Watched" Content="Czy obejrzałeś: " Margin="207,268,208,142" Visibility="Hidden" Width="82" Height="24"/>
-        <TextBox x:Name="Watchedtxt" Visibility="Hidden" Margin="294,273,127,140" Width="76" Height="21"/>
-        <Button Content="Obejrzałem" HorizontalAlignment="Left" Margin="432,438,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <Label Content="Blablabla" HorizontalAlignment="Left" Margin="65,174,0,0" VerticalAlignment="Top" Height="164" Width="195"/>
-        <GroupBox Header="Wynik Ankiety" Margin="60,156,277,131"/>
+        <Label x:Name="Watched" Content="Obejrzany: " Margin="335,379,142,97" Visibility="Visible" Width="82" Height="24"/>
+        <Button Content="Obejrzałem" HorizontalAlignment="Left" Margin="474,412,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="Button_Click" Background="#FF205871" Foreground="White" FontFamily="Century Gothic"/>
+
+        <GroupBox Header="Wynik Ankiety" Margin="35,154,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="242" Width="280"/>
+        <TextBox x:Name="filter" Grid.Column="1" HorizontalAlignment="Left" Margin="176,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" TextChanged="TextBox_TextChanged" FontFamily="Century Gothic" Height="21"/>
+        <Image Source="C:\Users\Karolinka\Pictures\logo.png" Margin="331,23,0,0" RenderTransformOrigin="0.504,0.521" HorizontalAlignment="Left" VerticalAlignment="Top" Width="111" Height="105">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0" AngleY="0.045"/>
+                    <RotateTransform Angle="0.412"/>
+                    <TranslateTransform X="-0.019" Y="0.005"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label Content="Witaj!" HorizontalAlignment="Left" Margin="412,72,0,0" VerticalAlignment="Top" Height="46" Width="76" FontFamily="Century Gothic" Foreground="White" FontSize="16"/>
+        <Label Content="Wpisz nazwę filmu" HorizontalAlignment="Left" Margin="29,92,0,0" VerticalAlignment="Top" Height="23" Width="113" Grid.Column="1"/>
+        <Label Content="lub nazwisko reżysera" HorizontalAlignment="Left" Margin="29,107,0,0" VerticalAlignment="Top" Height="23" Width="142" Grid.Column="1"/>
+        <Label FontSize="20" Content="WYSZUKIWANIE FILMÓW" Margin="0,52,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="242" Height="40" FontFamily="Century Gothic" Grid.Column="1"/>
+        <TextBlock TextWrapping="WrapWithOverflow"  Text="Na podstawie wypełnionej przez Ciebie ankiety przygotowaliśmy filmy, które powinny Ci się spodobać !  " HorizontalAlignment="Left" Margin="58,177,0,0"  VerticalAlignment="Top" Height="196" Width="237" Foreground="White" FontFamily="Century Gothic"/>
+        <TextBlock HorizontalAlignment="Left" Margin="364,153,0,0" Text="WYBRANY PRZEZ CIEBIE FILM" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Height="46" Width="148" TextAlignment="Center" FontSize="14" FontFamily="Century Gothic" Foreground="White"/>
 
 
     </Grid>
